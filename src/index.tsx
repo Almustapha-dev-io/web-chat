@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import { Provider } from 'react-redux';
+import { ChakraProvider } from '@chakra-ui/react';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import store, { persistor } from 'app/store';
 import App from 'App';
 
 const root = ReactDOM.createRoot(
@@ -9,6 +14,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
-		<App />
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<ChakraProvider>
+					<App />
+				</ChakraProvider>
+			</PersistGate>
+		</Provider>
 	</React.StrictMode>
 );

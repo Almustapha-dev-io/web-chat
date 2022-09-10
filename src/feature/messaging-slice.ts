@@ -14,7 +14,7 @@ const slice = createSlice({
 	initialState,
 	reducers: {
 		sendMessage(state, { payload }: PayloadAction<IMessage>) {
-			state.messages.push(payload);
+			state.messages.unshift(payload);
 		},
 	},
 });

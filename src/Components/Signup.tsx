@@ -9,11 +9,15 @@ import {
 	FormErrorMessage,
 	FormHelperText,
 } from '@chakra-ui/react';
+import { signIn } from 'feature/user-slice';
+import { useAppDispatch } from 'hooks';
 import React, { useRef, useState } from 'react';
 
 const Signup = () => {
 	const [error, setError] = useState('');
 	const inputRef = useRef<HTMLInputElement>(null);
+
+	const dispatch = useAppDispatch();
 
 	const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -21,6 +25,8 @@ const Signup = () => {
 		if (!value) {
 			return setError((_) => 'Enter a valid username');
 		}
+
+		dispatch(signIn(value));
 	};
 
 	return (

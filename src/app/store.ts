@@ -12,6 +12,10 @@ import {
 	initMessageListener,
 } from 'redux-state-sync';
 
+const stateSyncConfig = {
+	blacklist: ['user/signIn', 'user/signOut'],
+};
+
 const rootPersistConfig = {
 	key: 'root',
 	storage,
@@ -30,7 +34,7 @@ const store = configureStore({
 	devTools: process.env.NODE_ENV !== 'production',
 	middleware: (getDefaultMiddleware) => [
 		...getDefaultMiddleware(),
-		createStateSyncMiddleware(),
+		createStateSyncMiddleware(stateSyncConfig),
 	],
 });
 

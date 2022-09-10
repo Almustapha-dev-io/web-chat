@@ -20,7 +20,7 @@ const ChatMessage = ({ message }: Props) => {
 	const { user } = useAppSelector((s) => s.user!);
 
 	const isCurrentUser = () => {
-		return user?.username === message.username;
+		return user?.username.toLowerCase() === message.username.toLowerCase();
 	};
 
 	return (

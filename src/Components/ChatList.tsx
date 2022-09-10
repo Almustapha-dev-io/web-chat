@@ -28,7 +28,7 @@ const ChatList = ({ messages }: Props) => {
 			flexGrow={1}
 			borderWidth="1px"
 			rounded="xl"
-			overflowY="scroll"
+			overflowY="auto"
 			flexDirection="column-reverse"
 		>
 			{renderMessages()}

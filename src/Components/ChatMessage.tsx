@@ -31,7 +31,7 @@ const ChatMessage = ({ message }: Props) => {
 			justify="flex-start"
 			mb={6}
 		>
-			<Avatar name="Sasuke Uchiha" size={{ base: 'sm' }} />
+			<Avatar name={message.username} size={{ base: 'sm' }} />
 			<VStack
 				p={4}
 				borderWidth="1px"
@@ -48,7 +48,7 @@ const ChatMessage = ({ message }: Props) => {
 				<Text fontSize="sm">{message.message}</Text>
 				<HStack w="full" justify="flex-end">
 					<Text fontSize="xs">
-						{dayjs(message.dateAdded).format('DD MMM, YYYY')}
+						{dayjs(message.dateAdded).format('DD MMM, YYYY h:mma')}
 					</Text>
 				</HStack>
 			</VStack>

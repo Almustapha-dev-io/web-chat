@@ -5,7 +5,6 @@ import ChatInput from './ChatInput';
 import ChatList from './ChatList';
 
 const Chat = () => {
-	const { messages } = useAppSelector((s) => s.messaging);
 	const { user } = useAppSelector((s) => s.user);
 
 	const dispatch = useAppDispatch();
@@ -30,7 +29,7 @@ const Chat = () => {
 					Sign out
 				</Button>
 			</HStack>
-			<ChatList messages={messages} />
+			<ChatList />
 			<ChatInput />
 		</Flex>
 	);

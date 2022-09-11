@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { chakra, HStack, IconButton, Input } from '@chakra-ui/react';
+import { MdSend } from 'react-icons/md';
+import dayjs from 'dayjs';
+
 import { sendMessage } from 'feature/messaging-slice';
 import { useAppDispatch, useAppSelector } from 'hooks';
-import { MdSend } from 'react-icons/md';
 
 const ChatInput = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -17,7 +19,7 @@ const ChatInput = () => {
 
 		dispatch(
 			sendMessage({
-				dateAdded: new Date(),
+				dateAdded: dayjs(new Date()).format('DD MMM, YYYY h:mma'),
 				message: msg,
 				username: user.username,
 			})

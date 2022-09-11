@@ -7,7 +7,6 @@ import {
 	Text,
 	VStack,
 } from '@chakra-ui/react';
-import dayjs from 'dayjs';
 
 import { useAppSelector } from 'hooks';
 import { IMessage } from 'interfaces/messaging';
@@ -35,7 +34,9 @@ const ChatMessage = ({ message }: Props) => {
 			<VStack
 				p={4}
 				borderWidth="1px"
-				rounded="md"
+				rounded="2xl"
+				borderTopLeftRadius={!isCurrentUser() ? 0 : undefined}
+				borderTopRightRadius={isCurrentUser() ? 0 : undefined}
 				align="flex-start"
 				w={{ base: 'full', md: 'auto' }}
 				minW={{ md: '300px' }}
@@ -47,9 +48,7 @@ const ChatMessage = ({ message }: Props) => {
 				</Heading>
 				<Text fontSize="sm">{message.message}</Text>
 				<HStack w="full" justify="flex-end">
-					<Text fontSize="xs">
-						{dayjs(message.dateAdded).format('DD MMM, YYYY h:mma')}
-					</Text>
+					<Text fontSize="xs">{message.dateAdded}</Text>
 				</HStack>
 			</VStack>
 		</Stack>
